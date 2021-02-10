@@ -29,27 +29,5 @@
             CounterHeroes,
             SelectHeroes,
         },
-        data: function () {
-            return {
-                heroes: [],
-                hero: {},
-                selectedHeroes: [],
-                counterHeroes: []
-            }
-        },
-        methods: {
-            getAllDetails(){
-                axios.get('/counterpicker/heroes')
-                .then(response => {
-                    console.log(response.data);
-                })
-                .catch(errors => {
-                    console.log(errors);
-                })
-            }
-        },
-        created(){
-            this.getAllDetails();
-        }
     }
 </script>
