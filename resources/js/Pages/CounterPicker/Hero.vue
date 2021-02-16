@@ -1,36 +1,30 @@
 <template>
     <div>
-        <ul>
-            <li v-for="hero in heroes">
-                <img :src="l1+hero.name+l2">
-                {{ hero.name }}
-            </li>
-        </ul>
+        {{ heroName }}
     </div>
 </template>
 <script>
 export default {
+    props:{
+        hero:{
+            type: Object
+        },
+        heroName:{
+            type: String
+        },
+        heroCode:{
+            type: String
+        }
+    },
     data: function () {
         return {
-            heroes: [],
-            hero: {},
             l1: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/",
             l2: "_vert.jpg"
         }
-    },
-    methods: {
-        getAllDetails(){
-            axios.get('api/heroes')
-            .then(response => {
-                this.heroes = response.data;
-            })
-            .catch(errors => {
-                console.log(errors);
-            })
-        }
-    },
-    created(){
-        this.getAllDetails();
     }
 }
 </script>
+
+<style scoped>
+div {background-color: coral;}
+</style>
