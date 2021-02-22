@@ -22,7 +22,10 @@ class TimeTableInstanceFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => $this->faker->name,
+            'date' => $this->faker->date($format = 'Y-m-d', $max = 'now'),
+            'start_time' => $this->faker->time($format = 'H:i', $max = 'now'),
+            'end_time' => $this->faker->time($format = 'H:i', $max = 'now')
         ];
     }
 }

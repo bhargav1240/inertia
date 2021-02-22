@@ -17,6 +17,8 @@ class CreateTimeTableInstancesTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('date');
+            $table->string('start_time');
+            $table->string('end_time');
             $table->timestamps();
         });
     }

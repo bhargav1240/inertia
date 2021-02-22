@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\TimeTableInstance;
 use Illuminate\Database\Seeder;
 
 class TimeTableInstanceSeeder extends Seeder
@@ -13,6 +14,8 @@ class TimeTableInstanceSeeder extends Seeder
      */
     public function run()
     {
-        //
+        TimeTableInstance::factory()
+            ->count(50)
+            ->create();
     }
 }
