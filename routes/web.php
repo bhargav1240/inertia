@@ -20,8 +20,9 @@ Route::get('/', function () {
 });
 
 Route::get('/test', function () {
-    $date = now();
-    $str_time = strtotime("15-02-2021");
-    $temp = TimeTableInstance::whereDate('created_at', '<', date('Y-m-d', $str_time))->orderBy('date')->get();
-    dd($date, $str_time, $temp);
+    $temp = TimeTableInstance::whereDate([
+        ['date', '<', date('Y-m-d', strtotime("22-01-2021"))],
+        ['date', '>', date('Y-m-d', strtotime("22-02-2021"))]
+    ])->orderBy('date')->get();
+    dd($temp);
 });
