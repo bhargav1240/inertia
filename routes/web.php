@@ -20,9 +20,36 @@ Route::get('/', function () {
 });
 
 Route::get('/test', function () {
-    $temp = TimeTableInstance::whereDate([
-        ['date', '<', date('Y-m-d', strtotime("22-01-2021"))],
-        ['date', '>', date('Y-m-d', strtotime("22-02-2021"))]
-    ])->orderBy('date')->get();
-    dd($temp);
+    //2010-08-04
+    $start_date = "01-01-2000";
+    $end_date = "31-12-2010";
+    $start_time = "13:00";
+    $end_time = "14:02";
+//    if($start_date != null && $end_date != null){
+//        $temp = TimeTableInstance::whereBetween('date', [
+//            date('Y-m-d', strtotime($start_date)),
+//            date('Y-m-d', strtotime($end_date))
+//        ])
+//            ->orderBy('date')
+//            ->get();
+//    }
+    $temp = TimeTableInstance::
+    whereBetween('date', [
+        date("Y-m-d", strtotime($start_date)),
+        date("Y-m-d", strtotime($end_date))
+    ])
+    ->whereBetween('start_time', [
+        date("H:i", strtotime($start_time)),
+        date("H:i", strtotime($end_time))
+    ])
+        ->whereBetween('end_time', [
+            date("H:i", strtotime($start_time)),
+            date("H:i", strtotime($end_time))
+        ])
+        ->orderBy('date')
+        ->get();
+    return response()->json([
+        'count' => $temp->count(),
+        'data' => $temp,
+    ]);
 });

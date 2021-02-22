@@ -15,7 +15,7 @@ class TimeTableInstanceSeeder extends Seeder
     public function run()
     {
         TimeTableInstance::factory()
-            ->count(50)
+            ->count(3000)
             ->create();
     }
 }
