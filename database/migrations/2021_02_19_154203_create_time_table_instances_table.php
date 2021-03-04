@@ -16,7 +16,8 @@ class CreateTimeTableInstancesTable extends Migration
         Schema::create('time_table_instances', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('date');
+            $table->string('start_date');
+            $table->string('end_date');
             $table->string('start_time');
             $table->string('end_time');
             $table->timestamps();

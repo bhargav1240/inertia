@@ -21,12 +21,14 @@ class TimeTableInstanceFactory extends Factory
      */
     public function definition()
     {
+        $date = $this->faker->date('Y-m-d', 'now');
         $start_time = $this->faker->time('H:i', 'now');
         $end_time = date('H:i', strtotime($start_time)+3600);
 
         return [
             'name' => $this->faker->name,
-            'date' => $this->faker->date('Y-m-d', 'now'),
+            'start_date' => $date,
+            'end_date' => $date,
             'start_time' => $start_time,
             'end_time' => $end_time
         ];
